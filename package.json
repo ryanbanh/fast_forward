@@ -1,0 +1,25 @@
+{
+  "name": "fast-forward",
+  "version": "1.0.0",
+  "description": "Fast-forward webpage",
+  "main": "index.js",
+  "scripts": {
+    "watch:sass": "nodemon -e scss -x \"npm run compile:sass\"",
+    "devserver": "live-server --browser=chrome",
+    "start": "npm-run-all --parallel devserver watch:sass",
+    "compile:sass": "node-sass sass/main.scss css/style.css",
+    "prefix:css": "postcss --use autoprefixer -b \"last 10 versions\" css/style.css -o css/style.prefix.css",
+    "compress:css": "node-sass css/style.prefix.css css/style.css --output-style compressed",
+    "build:css": "npm-run-all compile:sass prefix:css compress:css"
+  },
+  "author": "Ryan Banh",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^9.5.0",
+    "concat": "^1.0.3",
+    "node-sass": "^4.11.0",
+    "nodemon": "^1.18.10",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^6.1.2"
+  }
+}
